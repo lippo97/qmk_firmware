@@ -26,56 +26,61 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAPPING_TERM 200
 #define PERMISSIVE_HOLD
 
-#define LD_LN5 KC_ESC
-#define LD_LN4 KC_1
-#define LD_LN3 KC_2
-#define LD_LN2 KC_3
-#define LD_LN1 KC_4
-#define LD_LN0 KC_5
-#define LD_RN0 KC_6
-#define LD_RN1 KC_7
-#define LD_RN2 KC_8
-#define LD_RN3 KC_9
-#define LD_RN4 KC_0
-#define LD_RN5 KC_MINS
+#define LAYOUT_COLUMNS_4(...) LAYOUT_COLUMNS_4_W(__VA_ARGS__)
+#define LAYOUT_COLUMNS_4_W( \
+         LN5, LT5, LM5, LB5,                  RN5, RT5, RM5, RB5,          \
+         LN4, LN3, LN2, LN1, LN0,             RN0, RN1, RN2, RN3, RN4,     \
+         LT4, LT3, LT2, LT1, LT0,             RT0, RT1, RT2, RT3, RT4,     \
+         LM4, LM3, LM2, LM1, LM0,             RM0, RM1, RM2, RM3, RM4,     \
+         LB4, LB3, LB2, LB1, LB0, LBA,   RBA, RB0, RB1, RB2, RB3, RB4      \
+) \
+    LN5, LN4, LN3, LN2, LN1, LN0,             RN0, RN1, RN2, RN3, RN4, RN5, \
+    LT5, LT4, LT3, LT2, LT1, LT0,             RT0, RT1, RT2, RT3, RT4, RT5, \
+    LM5, LM4, LM3, LM2, LM1, LM0,             RM0, RM1, RM2, RM3, RM4, RM5, \
+    LB5, LB4, LB3, LB2, LB1, LB0, LBA,   RBA, RB0, RB1, RB2, RB3, RB4, RB5
 
-#define LD_LT5 KC_TAB
-#define LD_LT4 KC_Q
-#define LD_LT3 KC_W
-#define LD_LT2 KC_E
-#define LD_LT1 KC_R
-#define LD_LT0 KC_T
-#define LD_RT0 KC_Y
-#define LD_RT1 KC_U
-#define LD_RT2 KC_I
-#define LD_RT3 KC_O
-#define LD_RT4 KC_P
-#define LD_RT5 KC_EQL
 
-#define LD_LM5 KC_LCTL
-#define LD_LM4 KC_A
-#define LD_LM3 KC_S
-#define LD_LM2 KC_D
-#define LD_LM1 KC_F
-#define LD_LM0 KC_G
-#define LD_RM0 KC_H
-#define LD_RM1 KC_J
-#define LD_RM2 KC_K
-#define LD_RM3 KC_L
-#define LD_RM4 KC_SCLN
-#define LD_RM5 KC_QUOT
+#define LAYOUT_INNER(...) LAYOUT_INNER_W(__VA_ARGS__)
+// #define LAYOUT_INNER_W(LBA, RBA, ...) LAYOUT_INNER(LBA, RBA, __VA_ARGS__)
+#define LAYOUT_INNER_W( \
+    LBA, RBA, \
+    LT4, LT3, LT2, LT1, LT0,   RT0, RT1, RT2, RT3, RT4, \
+    LM4, LM3, LM2, LM1, LM0,   RM0, RM1, RM2, RM3, RM4, \
+    LB4, LB3, LB2, LB1, LB0,   RB0, RB1, RB2, RB3, RB4  \
+) \
+    LT4, LT3, LT2, LT1, LT0,             RT0, RT1, RT2, RT3, RT4, \
+    LM4, LM3, LM2, LM1, LM0,             RM0, RM1, RM2, RM3, RM4, \
+    LB4, LB3, LB2, LB1, LB0, LBA,   RBA, RB0, RB1, RB2, RB3, RB4
 
-#define LD_LB5 KC_LGUI
-#define LD_LB4 LGUI_T(KC_Z)
-#define LD_LB3 LALT_T(KC_X)
-#define LD_LB2 LSFT_T(KC_C)
-#define LD_LB1 LCTL_T(KC_V)
-#define LD_LB0 KC_B
-#define LD_LBA KC_LBRC
-#define LD_RBA KC_RBRC
-#define LD_RB0 KC_N
-#define LD_RB1 RCTL_T(KC_M)
-#define LD_RB2 RSFT_T(KC_COMM)
-#define LD_RB3 LALT_T(KC_DOT)
-#define LD_RB4 RGUI_T(KC_SLSH)
-#define LD_RB5 KC_TGAM
+#define GASC_BOTTOM(...) GASC_BOTTOM_IMPL(__VA_ARGS__)
+#define GASC_BOTTOM_IMPL( \
+    LT4, LT3, LT2, LT1, LT0,   RT0, RT1, RT2, RT3, RT4, \
+    LM4, LM3, LM2, LM1, LM0,   RM0, RM1, RM2, RM3, RM4, \
+    LB4, LB3, LB2, LB1, LB0,   RB0, RB1, RB2, RB3, RB4  \
+) \
+    LT4, LT3, LT2, LT1, LT0,   RT0, RT1, RT2, RT3, RT4, \
+    LM4, LM3, LM2, LM1, LM0,   RM0, RM1, RM2, RM3, RM4, \
+    LGUI_T(LB4), LALT_T(LB3), LSFT_T(LB2), LCTL_T(LB1), LB0,   RB0, RCTL_T(RB1), RSFT_T(RB2), LALT_T(RB3), RGUI_T(RB4)
+
+#define NUMBERS \
+    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0
+
+#define QWERTY  \
+    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, \
+    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, \
+    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH
+
+#define SEMIMAK_JQ  \
+    KC_F,    KC_L,    KC_H,    KC_V,    KC_Z,    KC_QUOT,    KC_W,    KC_U,    KC_O,    KC_Y, \
+    KC_S,    KC_R,    KC_N,    KC_T,    KC_K,       KC_C,    KC_D,    KC_E,    KC_A,    KC_I, \
+    KC_X,    KC_J,    KC_B,    KC_M,    KC_Q,       KC_P,    KC_G, KC_COMM,  KC_DOT, KC_SLSH
+
+#define ISRT_MATRIX  \
+    KC_Y,    KC_C,    KC_L,    KC_M,    KC_K,       KC_Z,    KC_F,    KC_U, KC_COMM, KC_QUOT, \
+    KC_I,    KC_S,    KC_R,    KC_T,    KC_G,       KC_P,    KC_N,    KC_E,    KC_A,    KC_O, \
+    KC_Q,    KC_V,    KC_W,    KC_D,    KC_J,       KC_B,    KC_H, KC_SLSH, KC_DOT,    KC_X
+
+#define CANARY_MATRIX  \
+    KC_W,    KC_L,    KC_Y,    KC_P,    KC_B,       KC_Z,    KC_F,    KC_O,    KC_U, KC_QUOT, \
+    KC_C,    KC_R,    KC_S,    KC_T,    KC_G,       KC_M,    KC_N,    KC_E,    KC_I,    KC_A, \
+    KC_Q,    KC_J,    KC_V,    KC_D,    KC_K,       KC_X,    KC_H, KC_SLSH, KC_COMM, KC_DOT
