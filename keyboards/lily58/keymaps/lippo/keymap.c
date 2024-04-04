@@ -68,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LAYOUT_INNER(
       ALT_TAB,
       ALT_TAB,
-      SEMIMAK_JQ
+      GASC_BOTTOM(SEMIMAK_JQ)
     )
   ),
   KC_LALT, MO(_SYM), KC_LSFT, KC_BSPC, KC_SPC, KC_ENT, MO(_NAV), KC_RSFT
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_SYM] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-  _______, KC_BSLS, KC_TILD, KC_HASH, KC_QUES, KC_PIPE,                   KC_ASTR, KC_COLN, KC_LBRC, KC_RBRC, KC_GRV, _______,
+  _______, KC_BSLS, KC_TILD, KC_HASH, KC_QUES, KC_PIPE,                   KC_ASTR, KC_COLN, KC_LBRC, KC_RBRC,  KC_GRV, _______,
   _______, KC_PLUS, KC_MINS,  KC_EQL, KC_EXLM,   KC_AT,                   KC_SLSH, KC_LPRN, KC_RPRN, KC_UNDS, KC_SCLN, _______,
   _______, _______, _______, KC_LABK, KC_RABK, KC_PERC, _______, _______, KC_AMPR,  KC_DLR, KC_LCBR, KC_RCBR, KC_CIRC, _______,
                              _______, _______, _______, _______, _______, _______, _______, _______
