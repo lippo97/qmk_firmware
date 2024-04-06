@@ -6,6 +6,7 @@
 
 enum layer_number {
     _BASE = 0,
+    _SEMI,
     _SYM,
     _NUM,
     _FUN,
@@ -16,8 +17,15 @@ enum layer_number {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_W(
         LAYOUT_3x6(
-            KC_TAB, KC_LCTL, KC_LSFT, KC_MINS, KC_QUOT, _______,
+            KC_ESC, KC_LCTL, KC_LSFT, KC_MINS, KC_QUOT, _______,
             GASC_BOTTOM(QWERTY)
+        ),
+        LT(_NAV, KC_TAB), KC_LSFT, KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, LT(_NUM, KC_DEL)
+    ),
+    [_SEMI] = LAYOUT_W(
+        LAYOUT_3x6(
+            KC_TAB, KC_LCTL, KC_LSFT, KC_MINS, KC_QUOT, _______,
+            GASC_BOTTOM(SEMIMAK_JQ)
         ),
         LT(_NAV, KC_ESC), KC_LSFT, KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, LT(_NUM, KC_DEL)
     ),
@@ -40,14 +48,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______,                   _______, _______, _______
     ),
     [_NAV] = LAYOUT_W(
-        _______, _______, _______, _______,TO(_GME), _______,                   _______, _______, _______, _______, _______, _______,
+        _______, _______, _______,TO(_SEMI),TO(_GME), _______,                   _______, _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
         _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______,                   _______, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______,
                                    _______, _______, _______,                   _______, _______, _______
     ),
     [_GME] = LAYOUT_W(
-         KC_TAB,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
-        KC_LSFT,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,     KC_I,   KC_O,    KC_P, _______,
+         KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______,
+         KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,     KC_I,   KC_O,    KC_P, _______,
         KC_LCTL,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                      KC_H,    KC_J,     KC_K,   KC_L, KC_SCLN, _______,
                                       KC_B, KC_LALT, KC_BSPC,                   _______, _______, TO(_BASE)
     )
