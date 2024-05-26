@@ -19,6 +19,7 @@ enum layer_number {
   _SEMIJQ,
   _NAV,
   _SYM,
+  _FNS,
   _NUM,
   _GAME,
 };
@@ -40,14 +41,15 @@ enum my_keycodes {
 #define KC_EOL C(KC_E)
 #define LCOL5  KC_ESC, KC_TAB, KC_LCTL, KC_LGUI
 #define RCOL5 KC_MINS, KC_EQL, KC_QUOT, KC_TGAM
-#define THUMB_ROW KC_LALT, MO(_NUM), TD(TD_MY_CAPS), KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, MO(_NAV), KC_RSFT
+#define THUMB_ROW KC_LALT, LT(_NAV, KC_ESC), TD(TD_MY_CAPS), KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, LT(_NUM, KC_DEL), KC_RALT
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [_BASE] = LAYOUT_W(
   LAYOUT_COLUMNS_4(
-    KC_ESC, KC_TAB, KC_LCTL, TO(_SEMIJQ),
-    RCOL5,
+    KC_ESC, KC_TAB, KC_LCTL, KC_LSFT,
+    KC_MINS, KC_EQL, KC_QUOT, MO(_FNS),
     NUMBERS,
     LAYOUT_INNER(
       ALT_TAB,
@@ -61,9 +63,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [_SEMIJQ] = LAYOUT_W(
   LAYOUT_COLUMNS_4(
     // LEFT COL
-    KC_ESC, KC_TAB, KC_LCTL, TO(_BASE),
+    KC_ESC, KC_TAB, KC_LCTL, KC_LSFT,
     // RIGHT COL
-    KC_MINS, KC_EQL, KC_SCLN, KC_TGAM,
+    KC_MINS, KC_EQL, KC_SCLN, _______,
     NUMBERS,
     LAYOUT_INNER(
       ALT_TAB,
@@ -73,6 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   KC_LALT, MO(_SYM), KC_LSFT, KC_BSPC, KC_SPC, KC_ENT, MO(_NAV), KC_RSFT
 ),
+
 
 [_NAV] = LAYOUT(
   _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
@@ -98,11 +101,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                              _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
+[_FNS] = LAYOUT(
+  _______,     _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+  _______, TO(_BASE), TO(_SEMIJQ), TO(_GAME), _______, _______,                   _______, _______, _______, _______, _______, _______,
+  _______,     _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
+  _______,     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                             _______, _______, _______, _______, _______, _______, _______, _______
+),
+
 [_GAME] = LAYOUT(
   KC_ESC,   KC_1,   KC_2,    KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_GRV,
   KC_TAB,   KC_Q,   KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_MINS,
   KC_LSFT,  KC_A,   KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
-  KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    DCTL,    DCTL_MT,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_TGAM,
+  KC_LCTL,  KC_Z,   KC_X,    KC_C,    KC_V,    KC_B,    DCTL,    DCTL_MT,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
                              KC_P, KC_LGUI, KC_LALT, KC_BSPC,     KC_SPC,  KC_ENT, _______,    KC_RSFT
 )
 
