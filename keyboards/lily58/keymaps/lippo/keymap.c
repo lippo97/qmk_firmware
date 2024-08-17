@@ -41,7 +41,7 @@ enum my_keycodes {
 #define KC_EOL C(KC_E)
 #define LCOL5  KC_ESC, KC_TAB, KC_LCTL, KC_LGUI
 #define RCOL5 KC_MINS, KC_EQL, KC_QUOT, KC_TGAM
-#define THUMB_ROW KC_LALT, LT(_NAV, KC_ESC), TD(TD_MY_CAPS), KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, LT(_NUM, KC_DEL), KC_RALT
+#define THUMB_ROW KC_LALT, LT(_NAV, KC_ESC), KC_LSFT, KC_BSPC, LT(_SYM, KC_SPC), KC_ENT, LT(_NUM, KC_DEL), KC_RALT
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -78,8 +78,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 [_NAV] = LAYOUT(
-  _______, _______, _______, _______, _______, _______,                   _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______,                   _______, KC_PSTE, KC_COPY,  KC_CUT, KC_UNDO, _______,
+  _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,
+  _______, _______, _______, _______, _______, _______,                   _______, KC_PSTE, KC_COPY,  KC_CUT, KC_UNDO,  KC_F12,
   _______,  KC_BOL, KC_TERM, KC_INTR,  KC_EOL, _______,                   KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT, _______, _______,
   _______, KC_LGUI, KC_LALT, KC_LSFT, KC_LCTL, _______, _______, _______, _______, KC_HOME, KC_PGUP, KC_PGDN,  KC_END, _______,
                              _______, _______, _______,  KC_DEL, _______, _______, _______, _______
